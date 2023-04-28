@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutQuestionContainer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#532a55"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/textViewQuestion"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/sample_question"
+            android:fontFamily="monospace"
+            android:textSize="22sp"
+            android:textAlignment="center"
+            android:textColor="#c0cbc1"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutAnswersContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp"
+        android:background="#532a55"
+        >
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonAnswer1"
+            style="@style/answer_button_style"
+
+            android:text="1967"
+
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonAnswer2"
+            style="@style/answer_button_style"
+
+            android:text="1963"
+
+             />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonAnswer3"
+            style="@style/answer_button_style"
+
+
+            android:text="1971"
+
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonAnswer4"
+            style="@style/answer_button_style"
+
+
+            android:text="1973"
+
+            />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
