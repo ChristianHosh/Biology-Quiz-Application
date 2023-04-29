@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private int SCORE = 0;
 
 
-    private final int MAX_QUESTIONS = 5;
+    private final int MAX_QUESTIONS = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

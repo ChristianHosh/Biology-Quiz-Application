@@ -18,6 +18,7 @@ public class QuestionDataAccess {
                 new String[]{"The Sun", "Sirius", "Alpha Centauri", "Betelgeuse"},0));
         questions.add(new Question("Which animal is the fastest on land?",
                 new String[]{"Giraffe", "Lion", "Elephant", "Cheetah"},3));
+
     }
 
     public Question getRandomQuestion(){
