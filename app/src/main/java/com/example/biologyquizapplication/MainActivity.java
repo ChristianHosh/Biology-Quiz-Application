@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private QuestionDataAccess questionDataAccess;
 
     private boolean canAdvance = false;
-    private String scoreText = "Score: 0";
-    private String percentText = "0 / " + MAX_QUESTIONS + "| STREAK: 0";
-    private String streakText = "Streak: 0";
     private int SCORE = 0;
     private int CURRENT_STREAK = 0;
     private int QUESTIONS_ANSWERED_CORRECTLY = 0;
@@ -44,8 +41,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViews();
+
+        questionDataAccess = new QuestionDataAccess();
 
 
+
+        buttonNext.setOnClickListener(e -> {
+            if (canAdvance)
+                setNewQuestion();
+        });
+
+        startGame();
+
+    }
+
+    private void findViews() {
         textViewQuestion = findViewById(R.id.textViewQuestion);
         textViewPercent = findViewById(R.id.textViewPercentage);
         textViewStreak = findViewById(R.id.textViewStreak);
@@ -55,17 +66,6 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer2 = findViewById(R.id.buttonAnswer3);
         buttonAnswer3 = findViewById(R.id.buttonAnswer4);
         buttonNext = findViewById(R.id.buttonNext);
-
-
-        questionDataAccess = new QuestionDataAccess();
-
-        buttonNext.setOnClickListener(e -> {
-            if (canAdvance)
-                setNewQuestion();
-        });
-
-        startGame();
-
     }
 
     private void startGame() {
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < answerButtons.length; i++) {
             answerButtons[i].setText(questionAnswers[i]);
             answerButtons[i].setBackgroundResource(R.drawable.answer_button);
-            answerButtons[i].setTextColor(getResources().getColor(R.color.my_white));
+            answerButtons[i].setTextColor(answerButtons[i].getContext().getColor(R.color.my_white));
 
         }
 
@@ -118,27 +118,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateTopBar() {
-        scoreText = "Score: " + SCORE;
+        String scoreText = "Score: " + SCORE;
         textViewScore.setText(scoreText);
-        percentText = QUESTIONS_ANSWERED_CORRECTLY + " / " + MAX_QUESTIONS;
+        String percentText = QUESTIONS_ANSWERED_CORRECTLY + " / " + MAX_QUESTIONS;
         textViewPercent.setText(percentText);
-        streakText = "Streak: " + CURRENT_STREAK;
+        String streakText = "Streak: " + CURRENT_STREAK;
         textViewStreak.setText(streakText);
     }
 
     private void answeredWrong(AppCompatButton thisButton, AppCompatButton correctButton) {
 //        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
         thisButton.setBackgroundResource(R.drawable.answer_button_wrong);
-        thisButton.setTextColor(getResources().getColor(R.color.red));
+        thisButton.setTextColor(thisButton.getContext().getColor(R.color.red));
         correctButton.setBackgroundResource(R.drawable.answer_button_correct);
-        correctButton.setTextColor(getResources().getColor(R.color.aqua));
+        correctButton.setTextColor(correctButton.getContext().getColor(R.color.aqua));
         CURRENT_STREAK = 0;
     }
 
     private void answeredCorrect(AppCompatButton thisButton) {
 //        Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
         thisButton.setBackgroundResource(R.drawable.answer_button_correct);
-        thisButton.setTextColor(getResources().getColor(R.color.aqua));
+        thisButton.setTextColor(thisButton.getContext().getColor(R.color.aqua));
         CURRENT_STREAK++;
         QUESTIONS_ANSWERED_CORRECTLY++;
 

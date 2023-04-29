@@ -1,18 +1,11 @@
 package com.example.biologyquizapplication.model;
 
-import android.content.res.Resources;
-
-import com.example.biologyquizapplication.R;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class QuestionDataAccess {
-    private ArrayList<Question> questions;
-    private ArrayList<Question> generator;
+    private final ArrayList<Question> questions;
+    private final ArrayList<Question> generator;
 
     public QuestionDataAccess() {
         questions = new ArrayList<>();
@@ -214,11 +207,4 @@ public class QuestionDataAccess {
         return question;
     }
 
-    public ArrayList<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(ArrayList<Question> questions) {
-        this.questions = questions;
-    }
 }
