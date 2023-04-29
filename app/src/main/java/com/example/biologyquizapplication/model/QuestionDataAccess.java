@@ -21,7 +21,12 @@ public class QuestionDataAccess {
     }
 
     public Question getRandomQuestion(){
-        return questions.get(new Random().nextInt(4));
+        if (questions.isEmpty()){
+            return null;
+        }
+        Question question = questions.get(new Random().nextInt(questions.size()));
+        questions.remove(question);
+        return question;
     }
 
     public ArrayList<Question> getQuestions() {

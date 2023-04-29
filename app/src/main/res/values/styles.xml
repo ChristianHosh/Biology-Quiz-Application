@@ -6,5 +6,20 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:background">@drawable/answer_button</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:text">@string/answer_placeholder</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/my_white</item>
+    </style>
+
+    <style name="textViewBasicStyle">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/my_white</item>
     </style>
 </resources>

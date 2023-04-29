@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="my_white">#EBE9E9</color>
+    <color name="red">#C20000</color>
+    <color name="aqua">#42FFF9</color>
+    <color name="aqua_dark">#2AA09C</color>
+    <color name="aqua_darker">#1D716E</color>
+    <color name="jet">#383838</color>
+    <color name="my_black">#202020</color>
 </resources>

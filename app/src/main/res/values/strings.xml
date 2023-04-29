@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Biology Quiz Application</string>
     <string name="sample_question">In what year did Neil Armstrong and Buzz Aldrin land on the moon?</string>
+    <string name="next">Next</string>
+    <string name="score_placeholder">Score: 0</string>
+    <string name="answer_placeholder">Answer</string>
 </resources>

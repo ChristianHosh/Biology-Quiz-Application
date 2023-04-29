@@ -2,6 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" >
         <shape>
+            <solid
+                android:color="@color/aqua_darker"
+                />
             <corners
                 android:radius="15sp"
                 />
@@ -13,11 +16,14 @@
     </item>
     <item>
         <shape>
+            <solid
+                android:color="@color/aqua_dark"
+                />
             <corners
                 android:radius="15sp"
                 />
             <stroke
-                android:color="@color/my_white"
+                android:color="@color/jet"
                 android:width="3sp"
                 />
         </shape>
