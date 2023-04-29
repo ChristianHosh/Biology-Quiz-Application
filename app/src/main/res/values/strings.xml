@@ -4,4 +4,6 @@
     <string name="next">Next</string>
     <string name="score_placeholder">Score: 0</string>
     <string name="answer_placeholder">Answer</string>
+    <string name="percent_placeholder">0 / 10</string>
+    <string name="streak_placeholder">Streak: 0</string>
 </resources>

@@ -4,21 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.biologyquizapplication.model.Question;
 import com.example.biologyquizapplication.model.QuestionDataAccess;
 
-import org.w3c.dom.Text;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final int MAX_QUESTIONS = 10;
+
     private TextView textViewQuestion;
     private TextView textViewScore;
+    private TextView textViewPercent;
+    private TextView textViewStreak;
     private AppCompatButton buttonAnswer0;
     private AppCompatButton buttonAnswer1;
     private AppCompatButton buttonAnswer2;
@@ -29,10 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean canAdvance = false;
     private String scoreText = "Score: 0";
+    private String percentText = "0 / " + MAX_QUESTIONS + "| STREAK: 0";
+    private String streakText = "Streak: 0";
     private int SCORE = 0;
+    private int CURRENT_STREAK = 0;
+    private int QUESTIONS_ANSWERED_CORRECTLY = 0;
+    private int QUESTIONS_ANSWERED_TOTAL = 0;
 
 
-    private final int MAX_QUESTIONS = 10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         textViewQuestion = findViewById(R.id.textViewQuestion);
+        textViewPercent = findViewById(R.id.textViewPercentage);
+        textViewStreak = findViewById(R.id.textViewStreak);
         textViewScore = findViewById(R.id.textViewScore);
         buttonAnswer0 = findViewById(R.id.buttonAnswer1);
         buttonAnswer1 = findViewById(R.id.buttonAnswer2);
@@ -61,11 +69,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
-        textViewScore.setText(scoreText);
+        updateTopBar();
         setNewQuestion();
     }
 
     private void setNewQuestion() {
+        if (QUESTIONS_ANSWERED_TOTAL >= MAX_QUESTIONS){
+            endGame();
+            return;
+        }
+        canAdvance=false;
+
         Question question = questionDataAccess.getRandomQuestion();
         if (question == null){
             endGame();
@@ -95,27 +109,40 @@ public class MainActivity extends AppCompatActivity {
                     answeredCorrect(answerButtons[finalI]);
                 else
                     answeredWrong(answerButtons[finalI],answerButtons[correctAnswer]);
+                QUESTIONS_ANSWERED_TOTAL++;
                 canAdvance = true;
-                scoreText = "Score: " + SCORE;
-                textViewScore.setText(scoreText);
+                updateTopBar();
+
             });
         }
     }
 
+    private void updateTopBar() {
+        scoreText = "Score: " + SCORE;
+        textViewScore.setText(scoreText);
+        percentText = QUESTIONS_ANSWERED_CORRECTLY + " / " + MAX_QUESTIONS;
+        textViewPercent.setText(percentText);
+        streakText = "Streak: " + CURRENT_STREAK;
+        textViewStreak.setText(streakText);
+    }
+
     private void answeredWrong(AppCompatButton thisButton, AppCompatButton correctButton) {
-        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
         thisButton.setBackgroundResource(R.drawable.answer_button_wrong);
         thisButton.setTextColor(getResources().getColor(R.color.red));
         correctButton.setBackgroundResource(R.drawable.answer_button_correct);
         correctButton.setTextColor(getResources().getColor(R.color.aqua));
-
+        CURRENT_STREAK = 0;
     }
 
     private void answeredCorrect(AppCompatButton thisButton) {
-        Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
         thisButton.setBackgroundResource(R.drawable.answer_button_correct);
         thisButton.setTextColor(getResources().getColor(R.color.aqua));
-        SCORE += 10;
+        CURRENT_STREAK++;
+        QUESTIONS_ANSWERED_CORRECTLY++;
+
+        SCORE += (10 + (int)(Math.pow(2,CURRENT_STREAK)));
 
     }
 

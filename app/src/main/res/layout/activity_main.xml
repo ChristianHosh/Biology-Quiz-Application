@@ -10,29 +10,36 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:background="@drawable/top_bar"
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:padding="8dp"
         android:layout_height="80dp">
 
         <TextView
             android:id="@+id/textViewScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
             android:text="@string/score_placeholder"
-            style="@style/textViewBasicStyle"
+            style="@style/textViewTopBarStyle" />
+
+        <TextView
+            android:id="@+id/textViewPercentage"
+            android:text="@string/percent_placeholder"
+            style="@style/textViewTopBarStyle"
             />
 
+        <TextView
+            android:id="@+id/textViewStreak"
+            android:text="@string/streak_placeholder"
+            style="@style/textViewTopBarStyle"
+            />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView
         android:id="@+id/layoutQuestionContainer"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/question_container"
-        android:orientation="vertical"
         android:padding="10dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="20dp"
@@ -40,14 +47,13 @@
 
         <TextView
             android:id="@+id/textViewQuestion"
-            android:layout_margin="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="match_parent"
             android:text="@string/sample_question"
-            style="@style/textViewBasicStyle" />
+            style="@style/textViewBasicStyle"
+            tools:ignore="ScrollViewSize" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
