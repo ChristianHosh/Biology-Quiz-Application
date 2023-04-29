@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/endGameContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:background="@drawable/end_game_container"
+    >
+
+    <TextView
+        android:id="@+id/textViewEndGameQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_question"
+        android:textColor="@color/my_white"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/textViewEndGameAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/answer_placeholder"
+        android:textColor="@color/aqua"
+        android:textSize="17sp"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>

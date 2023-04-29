@@ -203,6 +203,7 @@ public class QuestionDataAccess {
             return null;
         }
         Question question = generator.get(new Random().nextInt(generator.size()));
+        UserAnswersModule.usedQuestions.add(question);
         generator.remove(question);
         return question;
     }

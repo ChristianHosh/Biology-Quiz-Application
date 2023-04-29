@@ -1,14 +1,15 @@
 package com.example.biologyquizapplication;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.biologyquizapplication.model.Question;
 import com.example.biologyquizapplication.model.QuestionDataAccess;
+import com.example.biologyquizapplication.model.UserAnswersModule;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -106,9 +107,9 @@ public class MainActivity extends AppCompatActivity {
             answerButtons[i].setOnClickListener(e -> {
                 int correctAnswer = atomicCorrectAnswer.get();
                 if (correctAnswer == answerIndex)
-                    answeredCorrect(answerButtons[finalI]);
+                    answeredCorrect(answerButtons[finalI], question);
                 else
-                    answeredWrong(answerButtons[finalI],answerButtons[correctAnswer]);
+                    answeredWrong(answerButtons[finalI],answerButtons[correctAnswer], question);
                 QUESTIONS_ANSWERED_TOTAL++;
                 canAdvance = true;
                 updateTopBar();
@@ -126,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
         textViewStreak.setText(streakText);
     }
 
-    private void answeredWrong(AppCompatButton thisButton, AppCompatButton correctButton) {
-//        Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+    private void answeredWrong(AppCompatButton thisButton, AppCompatButton correctButton, Question question) {
+        UserAnswersModule.wrongQuestions.add(question);
         thisButton.setBackgroundResource(R.drawable.answer_button_wrong);
         thisButton.setTextColor(thisButton.getContext().getColor(R.color.red));
         correctButton.setBackgroundResource(R.drawable.answer_button_correct);
@@ -135,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
         CURRENT_STREAK = 0;
     }
 
-    private void answeredCorrect(AppCompatButton thisButton) {
-//        Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+    private void answeredCorrect(AppCompatButton thisButton, Question question) {
+        UserAnswersModule.correctQuestions.add(question);
         thisButton.setBackgroundResource(R.drawable.answer_button_correct);
         thisButton.setTextColor(thisButton.getContext().getColor(R.color.aqua));
         CURRENT_STREAK++;
@@ -147,6 +148,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void endGame() {
-        Toast.makeText(this, "Finished All Questions", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, EndGameActivity.class);
+        UserAnswersModule.score = SCORE;
+        startActivity(intent);
+//        Toast.makeText(this, "Finished All Questions", Toast.LENGTH_SHORT).show();
     }
 }
