@@ -20,7 +20,7 @@
   <img src="https://user-images.githubusercontent.com/104357056/235326575-8e0c25eb-3742-431d-ae5b-3aa24dadd10e.jpg" width=30%>
   <h2>Final Overview Screen</h2>
   This final screen opens up when you finish answering 10 trivia questions and shows you all the questions you answered with their correct answers
-  <img src="https://user-images.githubusercontent.com/104357056/235326929-169b56b3-a18e-431c-8b78-e0ee6f4ea486.jpg" width=30%>
+  <img src="https://user-images.githubusercontent.com/104357056/235357967-35db5d56-efeb-45d8-ba21-538bdbb32801.jpg" width=30%>
 
 
 # To-Do & Future Plans
