@@ -11,10 +11,6 @@ public class QuestionDataAccess {
         questions = new ArrayList<>();
         populateList();
 
-
-
-
-
         System.out.println("GENERATOR REACHED");
         generator = new ArrayList<>(questions);
     }

@@ -1,11 +1,13 @@
 package com.example.biologyquizapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.example.biologyquizapplication.model.Question;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class EndGameActivity extends AppCompatActivity {
 
     private LinearLayoutCompat container;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,7 @@ public class EndGameActivity extends AppCompatActivity {
 
         TextView textViewEndGameScore = findViewById(R.id.textViewEndGameScore);
         container = findViewById(R.id.linearLayoutContainer);
+        AppCompatButton buttonNewGame = findViewById(R.id.buttonStartNewGame);
 
 
         ArrayList<Question> questions = UserAnswersModule.usedQuestions;
@@ -34,6 +38,11 @@ public class EndGameActivity extends AppCompatActivity {
 
         String scoreText = UserAnswersModule.score + "PT";
         textViewEndGameScore.setText(scoreText);
+
+        buttonNewGame.setOnClickListener(e -> {
+            Intent intent = new Intent(EndGameActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void addCard(Question question){

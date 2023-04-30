@@ -8,4 +8,5 @@
     <string name="streak_placeholder">Streak: 0</string>
     <string name="your_score">Your Score</string>
     <string name="score_points_placeholder">140PT</string>
+    <string name="start_new_game">Start New Game!</string>
 </resources>

@@ -70,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
+        SCORE = 0;
+        CURRENT_STREAK = 0;
+        QUESTIONS_ANSWERED_CORRECTLY = 0;
+        QUESTIONS_ANSWERED_TOTAL = 0;
         updateTopBar();
         setNewQuestion();
     }
@@ -150,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
     private void endGame() {
         Intent intent = new Intent(MainActivity.this, EndGameActivity.class);
         UserAnswersModule.score = SCORE;
+        startGame();
         startActivity(intent);
 //        Toast.makeText(this, "Finished All Questions", Toast.LENGTH_SHORT).show();
     }
